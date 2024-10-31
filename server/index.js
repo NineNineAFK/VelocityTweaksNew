@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("./config/passport");
 const { restrictToLoggedInUserOnly } = require("./middlewares/auth");
 
