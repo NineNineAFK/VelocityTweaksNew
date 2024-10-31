@@ -22,10 +22,14 @@ app.use(cors({
 
 // Cookie and session middlewares
 app.use(cookieParser());
+
+const mongoURI = 'mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D2';
+
 app.use(session({
   secret: "Aaditya@3737",
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: mongoURI }), // Set up MongoStore
 }));
 
 // Passport initialization
@@ -63,7 +67,7 @@ app.set("views", path.resolve("./views"));
 
 // MongoDB connection
 const { connectMongoDB } = require('./connect');
-connectMongoDB('mongodb+srv://Aaditya:admin@cluster0.kxn151h.mongodb.net/D2');
+connectMongoDB(mongoURI);
 
 // Start the server
 app.listen(3000, () => {
