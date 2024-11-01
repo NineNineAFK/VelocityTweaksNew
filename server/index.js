@@ -18,10 +18,11 @@ const methodRoutes = require('./routes/paymentMethod');
 const CLIENT_URL = process.env.CLIENT_URL;
 // CORS Configuration
 app.use(cors({
-  origin: CLIENT_URL, // Frontend URL
-  credentials: true, // Allow credentials such as cookies to be sent
+  origin: 'https://velocity-tweaks-new.vercel.app/', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true, 
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 // Cookie and session middlewares
 app.use(cookieParser());
 
