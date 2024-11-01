@@ -6,6 +6,7 @@ const Order = require('../model/order'); // Make sure the path is correct for th
 exports.checkAuth = async (req, res) => {
   try {
     if (req.isAuthenticated() && req.user && req.user.googleId) {
+      console.log(req);
       // The user is authenticated and has a googleId in the session
       const userGoogleId = req.user.googleId;
 

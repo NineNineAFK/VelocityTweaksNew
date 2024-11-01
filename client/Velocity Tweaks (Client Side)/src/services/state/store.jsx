@@ -134,7 +134,10 @@ export const authStateAtom = atom({
         try {
           const response = await axios.get(import.meta.env.VITE_domainName + "/auth/check-auth", {
             withCredentials: true,
+            
           });
+          console.log("frontend :", response);
+
           if (!ignore) {
             setSelf(response.data.authenticated);
           }
