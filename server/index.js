@@ -18,10 +18,11 @@ const methodRoutes = require('./routes/paymentMethod');
 const CLIENT_URL = process.env.CLIENT_URL;
 // CORS Configuration
 app.use(cors({
-  origin: 'https://velocity-tweaks-new.vercel.app/', 
+  origin: 'https://velocity-tweaks-new.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   credentials: true, 
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  
 }));
 // Cookie and session middlewares
 app.use(cookieParser());
@@ -32,6 +33,11 @@ app.use(session({
   secret: "Aaditya@3737",
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None'
+  },
   store: MongoStore.create({ mongoUrl: mongoURI }), // Set up MongoStore
 }));
 
