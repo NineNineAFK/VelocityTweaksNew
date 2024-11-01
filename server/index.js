@@ -15,9 +15,10 @@ const paypalWebhookRoutes = require('./routes/paypalWebhookRoutes');
 const downloadRoutes = require('./routes/downloadRoutes');
 const productRoutes = require('./routes/productRoutes');
 const methodRoutes = require('./routes/paymentMethod');
+const CLIENT_URL = process.env.CLIENT_URL;
 // CORS Configuration
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
+  origin: CLIENT_URL, // Frontend URL
   credentials: true, // Allow credentials such as cookies to be sent
 }));
 
