@@ -3,7 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 
 const authController = require('../controllers/authController');
-
+const CLIENT_URL = process.env.CLIENT_URL;
 // Google Authentication for Login
 router.get(
   "/google/login",
@@ -14,7 +14,7 @@ router.get(
   "/google/callback/login",
   passport.authenticate("google-login", { failureRedirect: "/user/signup",  failureMessage: "Email not found, please signup." }),
   (req, res) => {
-    res.redirect("https://velocity-tweaks-new.vercel.app/");
+    res.redirect(CLIENT_URL);
   }
 );
 
@@ -29,7 +29,7 @@ router.get("/logout", (req, res, next) => {
       return next(err);
     }
     res.clearCookie("uid"); // Clear the JWT cookie
-    res.redirect("https://velocity-tweaks-new.vercel.app/");
+    res.redirect(CLIENT_URL);
   });
 });
 
