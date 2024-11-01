@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { cartState } from "../services/state/store";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
-import { domainName } from "./domainName";
+
 
 const toastProperties = {
   position: "bottom-right",
@@ -22,7 +22,7 @@ export async function addToCart(utilName, productName, priceId) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   axios
     .post(
-      domainName + "/cart/add-to-cart",
+      import.meta.env.VITE_domainName + "/cart/add-to-cart",
       {
         productName: productName,
         priceId: priceId,
@@ -71,7 +71,7 @@ export async function removeFromCart(productName, priceId) {
     try {
       // Perform a POST request to remove the item from the cart
       const response = await axios.post(
-        domainName + "/cart/decrease",
+        import.meta.env.VITE_domainName + "/cart/decrease",
         {
           productName: productName,
           priceId: priceId,

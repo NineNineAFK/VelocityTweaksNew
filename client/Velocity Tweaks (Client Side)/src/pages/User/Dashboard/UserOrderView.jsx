@@ -3,7 +3,7 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import OrdersMap from "./OrdersMap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { domainName } from "../../../utils/domainName";
+
 
 export default function UserOrderView() {
   const [loadingState, setLoadingState] = useState(false);
@@ -13,7 +13,7 @@ export default function UserOrderView() {
     let ignore = false;
     const fetchOrders = async () => {
       setLoadingState(true);
-      const response = await axios.get(domainName + "/auth/check-auth", {
+      const response = await axios.get(import.meta.env.VITE_domainName + "/auth/check-auth", {
         withCredentials: true,
       });
 
